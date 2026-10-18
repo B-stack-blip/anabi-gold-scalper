@@ -39,6 +39,12 @@ double dayStartingEquity = 0.0;
 //+------------------------------------------------------------------+
 int OnInit()
 {
+   // DEMO ACCOUNT SAFETY LOCK
+   if(AccountInfoInteger(ACCOUNT_TRADE_MODE) != ACCOUNT_TRADE_MODE_DEMO)
+   {
+      Print("DEMO ONLY: Live trading is disabled.");
+      return INIT_FAILED;
+   }
    if(RiskPercent <= 0 || RiskPercent > 0.5 ||
       RewardRiskRatio <= 0 ||
       MaximumDailyLossPercent <= 0 ||
